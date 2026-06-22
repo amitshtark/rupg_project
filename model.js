@@ -2,7 +2,7 @@ async function fetchUsers(){ //returns { user: {...}, friends: [...] }
     try{
         const response = await fetch(`https://randomuser.me/api/?inc=name,location,picture&results=7`);
         if (!response.ok) {
-            throw new Error(response.error);
+            throw new Error("failed to fetch users");
         }
         const users = await response.json();
         const main_user = users.results[0];
@@ -42,7 +42,7 @@ async function fetchQuote(){ //returns string
     }
 
     catch(error){
-      console.log('Error fetching users:', error.message);
+      console.log('Error fetching quote:', error.message);
       return null;
     }
 }
@@ -61,7 +61,7 @@ async function fetchPokemon(){ //returns {name: pokemon_name, picture: pokemon_p
     }
 
     catch(error){
-      console.log('Error fetching users:', error.message);
+      console.log('Error fetching pokemon:', error.message);
       return null;
     }
 }
@@ -77,7 +77,25 @@ async function fetchIpsum(){ //returns string
     }
 
     catch(error){
-      console.log('Error fetching users:', error.message);
+      console.log('Error fetching ipsum:', error.message);
       return null;
     }
+}
+
+async function getRandomUserPage() { // returns {...}
+    const [usersData, quote, pokemon, about] = await Promise.all([
+    fetchUsers(),
+    fetchQuote(),
+    fetchPokemon(),
+    fetchIpsum()
+    ]);
+    if (!usersData || !quote || !pokemon || !about)
+        return null;
+    return {
+        user: usersData.user,
+        friends: usersData.friends,
+        quote: quote,
+        pokemon: pokemon,
+        about: about
+    };
 }
