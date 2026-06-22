@@ -35,3 +35,8 @@ function renderQuote(quote){
     const quoteContainer = document.getElementById("quote-container");
     quoteContainer.textContent = quote;
 }
+
+function renderAbout(about){
+    const aboutContainer = document.getElementById("about-container");
+    aboutContainer.textContent = about;
+}
