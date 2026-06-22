@@ -1,14 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Random User Page Generator</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    
-    <script src="model.js"></script>
-    <script src="view.js"></script>
-    <script src="controller.js"></script>
+
+  <main class="page">
+
+    <section class="actions">
+      <button id="generate-btn">Generate User</button>
+      <button id="save-btn">Save User</button>
+
+      <select id="saved-users-select">
+        <option value="">Choose saved user</option>
+      </select>
+
+      <button id="load-btn">Load User</button>
+    </section>
+
+    <section id="error-container"></section>
+
+    <section class="profile-card">
+      <div id="user-container"></div>
+
+      <div id="quote-container"></div>
+
+      <div id="pokemon-container"></div>
+    </section>
+
+    <section class="friends-section">
+      <h2>Friends</h2>
+      <div id="friends-container"></div>
+    </section>
+
+    <section class="about-section">
+      <h2>About Me</h2>
+      <div id="about-container"></div>
+    </section>
+
+  </main>
+
+  <script src="model.js"></script>
+  <script src="view.js"></script>
+  <script src="controller.js"></script>
 </body>
 </html>
