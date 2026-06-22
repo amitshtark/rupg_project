@@ -12,11 +12,10 @@ async function fetchUsers(){ //returns { user: {...}, friends: [...] }
         const main_picture = main_user.picture.medium;
         let friends = users.results.slice(1);
         friends = friends.map(person => person.name.first + " " + person.name.last)
-        console.log(friends);
         return (
         {
             user: {
-                Name: main_name,
+                name: main_name,
                 city: main_city,
                 state: main_state,
                 picture: main_picture
@@ -39,7 +38,6 @@ async function fetchQuote(){ //returns string
             throw new Error("failed to fetch quote");
         }
         const quoteObj = await response.json();
-        console.log(quoteObj.quote);
         return quoteObj.quote;
     }
 
@@ -49,3 +47,21 @@ async function fetchQuote(){ //returns string
     }
 }
 
+async function fetchPokemon(){ //returns {name: pokemon_name, picture: pokemon_picture}
+    try{
+        const randomId = Math.floor(Math.random() * 1025) + 1;
+        const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${randomId}`);
+        if (!response.ok) {
+            throw new Error("failed to fetch pokemon");
+        }
+        const pokemon = await response.json();
+        const pokemon_name = pokemon.name;
+        const pokemon_picture = pokemon.sprites.front_default;
+        return ({name: pokemon_name, picture: pokemon_picture});
+    }
+
+    catch(error){
+      console.log('Error fetching users:', error.message);
+      return null;
+    }
+}
