@@ -56,6 +56,7 @@ async function fetchPokemon(){ //returns {name: pokemon_name, picture: pokemon_p
         }
         const pokemon = await response.json();
         const pokemon_name = pokemon.name;
+        pokemon_name = pokemon_name[0].toUpperCase() + pokemon_name.slice(1);
         const pokemon_picture = pokemon.sprites.front_default;
         return ({name: pokemon_name, picture: pokemon_picture});
     }
