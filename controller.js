@@ -1,14 +1,28 @@
-async function loadRandomUserPage() {
+
+let currentUserPage = null;
+
+async function generateRandomUserPage() {
   const userPage = await getRandomUserPage();
 
   if (!userPage) {
     renderError("Something went wrong");
     return;
   }
-
+  currentUserPage = userPage;
   renderUserPage(userPage);
 }
 
-const generateBtn = document.getElementById("generate-btn");
+function saveRandomUserPage(){
+  if(currentUserPage !== null)
+  {
+    saveToLocalStorage(currentUserPage);
+  }
 
-generateBtn.addEventListener("click", loadRandomUserPage);
+}
+
+const generateBtn = document.getElementById("generate-btn");
+const saveBtn = document.getElementById("save-btn")
+
+generateBtn.addEventListener("click", generateRandomUserPage);
+
+saveBtn.addEventListener("click", saveRandomUserPage);
