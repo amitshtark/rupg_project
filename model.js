@@ -47,7 +47,7 @@ async function fetchQuote(){ //returns string
     }
 }
 
-async function fetchPokemon(){ //returns {name: pokemon_name, picture: pokemon_picture}
+async function fetchIpsum(){ //returns {name: pokemon_name, picture: pokemon_picture}
     try{
         const randomId = Math.floor(Math.random() * 1025) + 1;
         const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${randomId}`);
@@ -58,6 +58,22 @@ async function fetchPokemon(){ //returns {name: pokemon_name, picture: pokemon_p
         const pokemon_name = pokemon.name;
         const pokemon_picture = pokemon.sprites.front_default;
         return ({name: pokemon_name, picture: pokemon_picture});
+    }
+
+    catch(error){
+      console.log('Error fetching users:', error.message);
+      return null;
+    }
+}
+
+async function fetchIpsum(){ //returns string
+    try{
+        const response = await fetch(`https://baconipsum.com/api/?type=meat-and-filler&paras=1`);
+        if (!response.ok) {
+            throw new Error("failed to fetch ipsum");
+        }
+        const IpsumObj = await response.json();
+        return IpsumObj[0];
     }
 
     catch(error){
