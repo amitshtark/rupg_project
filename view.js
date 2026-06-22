@@ -30,3 +30,8 @@ function renderFriends(friends)
     });
 
 }
+
+function renderQuote(quote){
+    const quoteContainer = document.getElementById("quote-container");
+    quoteContainer.textContent = quote;
+}
