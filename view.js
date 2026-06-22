@@ -1,4 +1,5 @@
 function renderUserPage(userPage){
+    document.querySelector(".profile-card").style.display = "grid";
     renderUser(userPage.user);
     renderFriends(userPage.friends);
     renderQuote(userPage.quote);
@@ -32,8 +33,12 @@ function renderFriends(friends)
 }
 
 function renderQuote(quote){
-    const quoteContainer = document.getElementById("quote-container");
-    quoteContainer.textContent = quote;
+  const quoteContainer = document.getElementById("quote-container");
+
+  quoteContainer.innerHTML = `
+    <p class="quote-text">"${quote}"</p>
+    <p class="quote-author">— Kanye West</p>
+  `;
 }
 
 function renderPokemon(pokemon){
