@@ -17,6 +17,8 @@ function saveRandomUserPage() {
     saveToLocalStorage(currentUserPage);
     renderSavedUsersDropdown(getSavedUserNames());
   }
+  else
+    renderError("Generate a user before saving");
 }
 
 function loadRandomUserPage() {
