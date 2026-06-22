@@ -53,3 +53,21 @@ function renderAbout(about){
     const aboutContainer = document.getElementById("about-container");
     aboutContainer.textContent = about;
 }
+
+function renderSavedUsersDropdown(userNames) {
+  const select = document.getElementById("saved-users-select");
+
+  select.innerHTML = `<option value="">Choose saved user</option>`;
+
+  userNames.forEach(name => {
+    const option = document.createElement("option");
+    option.value = name;
+    option.textContent = name;
+    select.appendChild(option);
+  });
+}
+
+function renderError(message) {
+  const errorContainer = document.getElementById("error-container");
+  errorContainer.textContent = message;
+}
