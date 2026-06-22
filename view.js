@@ -36,6 +36,19 @@ function renderQuote(quote){
     quoteContainer.textContent = quote;
 }
 
+function renderPokemon(pokemon){
+  const pokemonContainer = document.getElementById("pokemon-container");
+
+  pokemonContainer.innerHTML = `
+    <div class="pokemon-info">
+      <h3>${pokemon.name}</h3>
+    </div>
+    <img src="${pokemon.picture}" alt="${pokemon.name}" class="pokemon-img">
+
+  `;
+}
+
+
 function renderAbout(about){
     const aboutContainer = document.getElementById("about-container");
     aboutContainer.textContent = about;
