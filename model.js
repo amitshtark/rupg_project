@@ -47,7 +47,7 @@ async function fetchQuote(){ //returns string
     }
 }
 
-async function fetchIpsum(){ //returns {name: pokemon_name, picture: pokemon_picture}
+async function fetchPokemon(){ //returns {name: pokemon_name, picture: pokemon_picture}
     try{
         const randomId = Math.floor(Math.random() * 1025) + 1;
         const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${randomId}`);
