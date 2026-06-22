@@ -37,7 +37,7 @@ function renderQuote(quote){
 
   quoteContainer.innerHTML = `
     <p class="quote-text">"${quote}"</p>
-    <p class="quote-author">— Kanye West</p>
+    <p class="quote-author"> Kanye West</p>
   `;
 }
 
